@@ -62,6 +62,9 @@ return {
       },
     },
   },
+  {
+    "BurntSushi/ripgrep",
+  },
 
   -- add pyright to lspconfig
   {
