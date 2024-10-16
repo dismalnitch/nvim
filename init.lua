@@ -4,12 +4,36 @@ require("config.lazy")
 
 -- require("plugins.surround")
 require("catppuccin")
-require("vim_dadbod_completion")
-require("plugins.lsp")
 -- require("coc.nvim")
-require("lazyvim.config.keymaps")
-require("lazy").setup("plugins", {})
 -- require("plugins.dashboard")
+--
+--
+
+local nvim_lsp = require("lspconfig")
+
+-- Example for configuring the tsserver (TypeScript) LSP
+nvim_lsp.tsserver.setup({
+  on_attach = function(client, bufnr)
+    -- Custom handler to filter out specific diagnostics
+    client.handlers["textDocument/inlayHint"] = function(_, result, ctx, config)
+      local diagnostics = result.diagnostics
+      local filtered_diagnostics = {}
+
+      for _, diagnostic in ipairs(diagnostics) do
+        -- Filter out diagnostics with specific codes or messages
+        if diagnostic.code ~= "-32603" and not diagnostic.message:match("<semantic> (.+)") then
+          table.insert(filtered_diagnostics, diagnostic)
+        end
+      end
+
+      result.diagnostics = filtered_diagnostics
+      vim.lsp.diagnostic.on_publish_diagnostics(_, result, ctx, config)
+    end
+  end,
+  flags = {
+    debounce_text_changes = 150,
+  },
+})
 vim.api.nvim_set_var("coc_user_config", {
   ["coc.preferences.snippets.enable"] = true,
   ["coc.preferences.snippets.extends"] = { "ts", "javascript" },
