@@ -14,5 +14,4 @@ return {
     },
   },
   { "nvimdev/dashboard-nvim" },
-  { "neoclide/coc.nvim" },
 }

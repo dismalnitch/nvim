@@ -8,6 +8,7 @@ require("catppuccin")
 -- require("plugins.dashboard")
 --
 --
+--
 
 local nvim_lsp = require("lspconfig")
 
@@ -21,7 +22,10 @@ nvim_lsp.tsserver.setup({
 
       for _, diagnostic in ipairs(diagnostics) do
         -- Filter out diagnostics with specific codes or messages
-        if diagnostic.code ~= "-32603" and not diagnostic.message:match("<semantic> (.+)") then
+        if
+          diagnostic.code ~= "-32603"
+          and not diagnostic.message:match("<semantic> (.+)")
+        then
           table.insert(filtered_diagnostics, diagnostic)
         end
       end
@@ -34,6 +38,7 @@ nvim_lsp.tsserver.setup({
     debounce_text_changes = 150,
   },
 })
+
 vim.api.nvim_set_var("coc_user_config", {
   ["coc.preferences.snippets.enable"] = true,
   ["coc.preferences.snippets.extends"] = { "ts", "javascript" },
@@ -109,7 +114,20 @@ vim.api.nvim_set_var("coc_user_config", {
   ["coc.preferences.suggestRemoveInsertSpace"] = true,
   ["coc.preferences.suggestSelection"] = "always",
   ["coc.preferences.suggestSortChanges"] = false,
-  ["coc.preferences.suggestTriggerCharacters"] = { ".", '"', "'", "`", "/", "@", "<", "#", "$", "(", "[", "{" },
+  ["coc.preferences.suggestTriggerCharacters"] = {
+    ".",
+    '"',
+    "'",
+    "`",
+    "/",
+    "@",
+    "<",
+    "#",
+    "$",
+    "(",
+    "[",
+    "{",
+  },
   ["coc.preferences.tabNine.enable"] = false,
   ["coc.preferences.tsserver.enableJavascript"] = true,
   ["coc.preferences.tsserver.npm"] = "yarn",
