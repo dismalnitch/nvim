@@ -1,6 +1,7 @@
 -- bootstrap lazy.nvim, LazyVim and your plugins
 
 require("config.lazy")
+require("config.autocmds")
 
 -- require("plugins.surround")
 require("catppuccin")
@@ -92,7 +93,6 @@ vim.api.nvim_set_var("coc_user_config", {
     ["keyword"] = "⚡",
     ["variable"] = "🔮",
     ["value"] = "🔖",
-    ["constant"] = "📒",
     ["class"] = "📦",
     ["type"] = "📚",
     ["snippet"] = "✂",

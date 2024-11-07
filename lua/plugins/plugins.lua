@@ -4,9 +4,10 @@ local plugins = {
     lazy = false,
   },
   {
-    "dadbod/vim-dadbod",
+    "tpope/vim-dadbod",
     lazy = true,
   },
+  { "tpope/vim-surround" },
 }
 
 return plugins
