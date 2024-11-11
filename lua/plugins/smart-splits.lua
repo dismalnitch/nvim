@@ -7,25 +7,25 @@ return {
     -- recommended mappings
     vim.keymap.set(
       "n",
-      "<A-h>",
+      "<C-A-h>",
       require("smart-splits").resize_left,
       { noremap = true, silent = true }
     )
     vim.keymap.set(
       "n",
-      "<A-j>",
+      "<C-A-j>",
       require("smart-splits").resize_down,
       { noremap = true, silent = true }
     )
     vim.keymap.set(
       "n",
-      "<A-k>",
+      "<C-A-k>",
       require("smart-splits").resize_up,
       { noremap = true, silent = true }
     )
     vim.keymap.set(
       "n",
-      "<A-h>",
+      "<C-A-l>",
       require("smart-splits").resize_right,
       { noremap = true, silent = true }
     )
