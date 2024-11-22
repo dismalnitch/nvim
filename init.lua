@@ -5,6 +5,15 @@ require("config.autocmds")
 
 vim.o.mouse = "a"
 
+-- Ensure your custom keybinding is set after all plugins are loaded
+-- And by that, I of course mean that copilot is scooping my keybindings. So here's a hack.
+vim.api.nvim_create_autocmd("User", {
+  pattern = "LazyDone",
+  callback = function()
+    vim.keymap.set("n", "<C-l>", require("smart-splits").move_cursor_right)
+  end,
+})
+
 require("aerial").setup({
   -- optionally use on_attach to set keymaps when aerial has attached to a buffer
   on_attach = function(bufnr)
@@ -33,6 +42,15 @@ require("aerial").setup({
     "Method",
     "Struct",
   },
+})
+
+require("mini.pairs").setup({
+  -- Disable all auto-pairing
+  disable = true,
+})
+
+require("nvim-ts-autotag").setup({
+  enable = false,
 })
 
 -- You probably also want to set a keymap to toggle aerial
