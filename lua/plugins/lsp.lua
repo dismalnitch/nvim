@@ -13,5 +13,12 @@ return {
       "nvim-tree/nvim-web-devicons", -- optional
     },
   },
-  { "nvimdev/dashboard-nvim" },
+  {
+    "nvimdev/dashboard-nvim",
+  },
+  {
+    "pmizio/typescript-tools.nvim",
+    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+    opts = {},
+  },
 }

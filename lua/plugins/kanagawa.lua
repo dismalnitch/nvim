@@ -3,7 +3,7 @@ return {
   -- Configure LazyVim to load gruvbox
   config = function()
     require("kanagawa").setup({
-      compile = false, -- enable compiling the colorscheme
+      compile = true, -- enable compiling the colorscheme
       undercurl = true, -- enable undercurls
       commentStyle = { italic = true },
       functionStyle = {},
@@ -17,7 +17,9 @@ return {
         theme = { wave = {}, lotus = {}, dragon = {}, all = {} },
       },
       overrides = function(colors) -- add/modify highlights
-        return {}
+        return {
+          LineNr = { bg = "NONE" },
+        }
       end,
       theme = "wave", -- Load "wave" theme when 'background' option is not set
       background = { -- map the value of 'background' option to a theme

@@ -19,7 +19,10 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
     os.exit(1)
   end
 end
+
 vim.opt.rtp:prepend(lazypath)
+
+-- cmp_ai config was moved to plugins/cmp.lua
 
 require("lazy").setup({
   spec = {
@@ -30,6 +33,7 @@ require("lazy").setup({
       opts = { colorscheme = "kanagawa" },
     },
     -- import/override with your plugins
+    { import = "lazyvim.plugins.extras.dap.core" },
     { import = "plugins" },
   },
   defaults = {
@@ -61,4 +65,16 @@ require("lazy").setup({
       },
     },
   },
+
+  -- These are now configured properly in plugins/cmp.lua
+  -- Remove these lines to avoid conflict with plugins/cmp.lua
+  { "tzachar/cmp-ai", dependencies = "nvim-lua/plenary.nvim" },
+  { "hrsh7th/nvim-cmp", dependencies = { "tzachar/cmp-ai" } },
 })
+
+require("cmp").setup({
+  sources = {
+    { name = "cmp_ai" },
+  },
+})
+

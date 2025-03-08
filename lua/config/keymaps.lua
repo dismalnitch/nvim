@@ -5,9 +5,6 @@
 
 local map = vim.keymap.set
 
-map({ "i", "v" }, "fd", "<esc>")
-map({ "i", "v" }, "df", "<esc>")
-
 map("n", "K", "<cmd>Lspsaga hover_doc<cr>", { desc = "Show Hover Doc" })
 map(
   "n",
