@@ -17,9 +17,9 @@ return {
       local cmp = require("cmp")
       local luasnip = require("luasnip")
       local icons = require("lazyvim.config").icons
-      
+
       require("luasnip.loaders.from_vscode").lazy_load()
-      
+
       return {
         completion = {
           completeopt = "menu,menuone,noinsert",
@@ -64,20 +64,22 @@ return {
           { name = "luasnip", priority = 750 },
           { name = "buffer", priority = 500 },
           { name = "path", priority = 250 },
+          { name = "cmp_ai", priority = 800 },
         }),
         formatting = {
           format = function(entry, item)
             if icons.kinds[item.kind] then
               item.kind = icons.kinds[item.kind] .. item.kind
             end
-            
+
             item.menu = ({
               nvim_lsp = "[LSP]",
               luasnip = "[Snippet]",
               buffer = "[Buffer]",
               path = "[Path]",
+              cmp_ai = "[AI]",
             })[entry.source.name]
-            
+
             return item
           end,
         },
@@ -88,7 +90,7 @@ return {
       }
     end,
   },
-  
+
   -- Configure cmdline and search completion
   {
     "hrsh7th/nvim-cmp",
