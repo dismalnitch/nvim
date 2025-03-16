@@ -1,4 +1,6 @@
 return {
+  -- cmp-ai
+
   -- nvim-cmp setup
   {
     "hrsh7th/nvim-cmp",
@@ -114,4 +116,5 @@ return {
       })
     end,
   },
+  {},
 }
