@@ -19,6 +19,7 @@ map(
   "<cmd>Lspsaga peek_type_definition",
   { desc = "Peek Type Definition" }
 )
+map("n", "<Space>aa", "<cmd>CopilotChatToggle<CR>")
 map(
   "n",
   "pi",
