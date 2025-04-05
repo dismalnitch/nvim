@@ -16,15 +16,20 @@ vim.api.nvim_create_autocmd("User", {
   end,
 })
 
--- require("nvim-ts-autotag").setup({
---   enable = false,
--- })
-
--- cmp_ai config was moved to plugins/cmp.lua
-
 vim.g.copilot_no_tab_map = false
 
 local nvim_lsp = require("lspconfig")
+require("lspconfig").tsserver.setup({
+  on_attach = function(client, bufnr)
+    -- Disable tsserver formatting
+    client.resolved_capabilities.document_formatting = false
+    client.resolved_capabilities.document_range_formatting = false
+
+    -- Enable inlay hints
+    require("lsp-inlayhints").on_attach(client, bufnr)
+  end,
+  capabilities = require("cmp_nvim_lsp").default_capabilities(),
+})
 -- Enable godot lsp
 -- local api = require("typescript-tools.api")
 -- require("typescript-tools").setup({
