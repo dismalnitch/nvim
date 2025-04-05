@@ -1,24 +1,25 @@
-return {
-  {
-    "nvimdev/lspsaga.nvim",
-    config = function()
-      require("lspsaga").setup({
-        lightbulb = {
-          enable = false,
-        },
-      })
-    end,
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter", -- optional
-      "nvim-tree/nvim-web-devicons", -- optional
-    },
-  },
-  {
-    "nvimdev/dashboard-nvim",
-  },
-  {
-    "pmizio/typescript-tools.nvim",
-    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-    opts = {},
-  },
-}
+return {}
+-- return {
+--   {
+--     "nvimdev/lspsaga.nvim",
+--     config = function()
+--       require("lspsaga").setup({
+--         lightbulb = {
+--           enable = false,
+--         },
+--       })
+--     end,
+--     dependencies = {
+--       "nvim-treesitter/nvim-treesitter", -- optional
+--       "nvim-tree/nvim-web-devicons", -- optional
+--     },
+--   },
+--   {
+--     "nvimdev/dashboard-nvim",
+--   },
+--   {
+--     "pmizio/typescript-tools.nvim",
+--     dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+--     opts = {},
+--   },
+-- }
