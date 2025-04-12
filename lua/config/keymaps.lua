@@ -3,33 +3,55 @@
 -- Add any additional keymaps here
 --
 
+-- Define the path to the init.lua file
+
+-- Create a key mapping to source the init.lua file
 local map = vim.keymap.set
 
-map("n", "K", "<cmd>Lspsaga hover_doc<cr>", { desc = "Show Hover Doc" })
-map(
-  "n",
-  "<leader>ci",
-  "<cmd>Lspsaga finder",
-  { desc = "Search Current Symbol In Lspsaga Finder" }
-)
-map("n", "py", "<cmd>Lspsaga peek_definition", { desc = "Peek Definition" })
+-- yanky --------
+
+vim.keymap.set({ "n", "x" }, "p", "<Plug>(YankyPutAfter)")
+vim.keymap.set({ "n", "x" }, "P", "<Plug>(YankyPutBefore)")
+vim.keymap.set({ "n", "x" }, "gp", "<Plug>(YankyGPutAfter)")
+vim.keymap.set({ "n", "x" }, "gP", "<Plug>(YankyGPutBefore)")
+
+vim.keymap.set("n", "<c-p>", "<Plug>(YankyPreviousEntry)")
+vim.keymap.set("n", "<c-n>", "<Plug>(YankyNextEntry)")
+
+-----------------
+
 map(
   "n",
   "pd",
   "<cmd>Lspsaga peek_type_definition",
   { desc = "Peek Type Definition" }
 )
-map("n", "<Space>aa", "<cmd>CopilotChatToggle<CR>")
 map(
   "n",
-  "pi",
-  "<cmd>Lspsaga preview_definition",
-  { desc = "Preview Definition" }
+  "<leader>aa",
+  "<cmd>CodeCompanionActions<cr>",
+  { desc = "Code Companion" }
+)
+map(
+  "n",
+  "<leader>ac",
+  "<cmd>CodeCompanionClose<cr>",
+  { desc = "Code Companion Close" }
+)
+
+-- Load new config without closing
+local config_path = vim.fn.stdpath("config")
+local init_lua_path = config_path .. "/init.lua"
+map(
+  "n",
+  "<leader>rr",
+  ':lua vim.cmd("source ' .. init_lua_path .. '")<CR>',
+  { noremap = true, silent = true }
 )
 map(
   "n",
   "<Space>xi",
-  "<cmd>lua vim.diagnostic.open_float(0, { scope = 'line' })",
+  "<cmd>lua vim.diagnostic.open_float(0, { scope = 'line' })<CR>",
   { desc = "Floating error (current line)" }
 )
 map(

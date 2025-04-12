@@ -19,17 +19,19 @@ vim.api.nvim_create_autocmd("User", {
 vim.g.copilot_no_tab_map = false
 
 local nvim_lsp = require("lspconfig")
-require("lspconfig").tsserver.setup({
-  on_attach = function(client, bufnr)
-    -- Disable tsserver formatting
-    client.resolved_capabilities.document_formatting = false
-    client.resolved_capabilities.document_range_formatting = false
-
-    -- Enable inlay hints
-    require("lsp-inlayhints").on_attach(client, bufnr)
-  end,
-  capabilities = require("cmp_nvim_lsp").default_capabilities(),
-})
+--(
+---- require("lspconfig").tsserver.setup({
+--   on_attach = function(client, bufnr)
+--     -- Disable tsserver formatting
+--     client.resolved_capabilities.document_formatting = false
+--     client.resolved_capabilities.document_range_formatting = false
+--
+--     -- Enable inlay hints
+--     require("lsp-inlayhints").on_attach(client, bufnr)
+--   end,
+--   capabilities = require("cmp_nvim_lsp").default_capabilities(),
+-- })
+--
 -- Enable godot lsp
 -- local api = require("typescript-tools.api")
 -- require("typescript-tools").setup({
@@ -85,33 +87,19 @@ require("lspconfig").tsserver.setup({
 -- })
 
 -- dap
-local dap = require("dap")
-dap.adapters.godot = {
-  type = "server",
-  host = "127.0.0.1",
-  port = 6006,
-}
-
-dap.configurations.gdscript = {
-  {
-    type = "godot",
-    request = "launch",
-    name = "Launch scene",
-    project = "${workspaceFolder}",
-    launch_scene = true,
-  },
-}
+-- telescope
+-- )
 
 -- listen to godothost if we're trying to open a godot project
 -- local projectfile = vim.fn.getcwd() .. "/project.godot"
 -- if projectfile then
 --   vim.fn.serverstart("./godothost")
 -- end
-local port = os.getenv("GDScript_Port") or "6005"
-local portNum = tonumber(port)
-local cmd = vim.lsp.rpc.connect("127.0.0.1", portNum)
-local pipe = "/path/to/godot.pipe" -- I use /tmp/godot.pipe
-
+-- local port = os.getenv("GDScript_Port") or "6005"
+-- local portNum = tonumber(port)
+-- local cmd = vim.lsp.rpc.connect("127.0.0.1", portNum)
+-- local pipe = "/path/to/godot.pipe" -- I use /tmp/godot.pipe
+--
 -- vim.lsp.start({
 --   name = "Godot",
 --   cmd = cmd,
