@@ -18,6 +18,7 @@ vim.api.nvim_create_autocmd("User", {
 
 vim.g.copilot_no_tab_map = false
 
+vim.api.nvim_set_hl(0, "WinSeparator", { fg = "#b4a7b5" })
 local nvim_lsp = require("lspconfig")
 --(
 ---- require("lspconfig").tsserver.setup({

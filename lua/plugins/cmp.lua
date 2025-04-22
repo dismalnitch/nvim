@@ -1,6 +1,4 @@
 return {
-  -- cmp-ai
-
   -- nvim-cmp setup
   {
     "hrsh7th/nvim-cmp",
@@ -37,7 +35,7 @@ return {
           ["<C-f>"] = cmp.mapping.scroll_docs(4),
           ["<C-Space>"] = cmp.mapping.complete(),
           ["<C-e>"] = cmp.mapping.abort(),
-          ["<CR>"] = cmp.mapping.confirm({ select = true }),
+          ["<TAB>"] = cmp.mapping.confirm({ select = true }),
           ["<C-y>"] = cmp.mapping.confirm({ select = true }),
           ["<S-CR>"] = cmp.mapping.confirm({
             behavior = cmp.ConfirmBehavior.Replace,
@@ -117,5 +115,9 @@ return {
       })
     end,
   },
-  {},
+
+  -- cmp-ai
+  {
+    "zbirenbaum/copilot-cmp",
+  },
 }
