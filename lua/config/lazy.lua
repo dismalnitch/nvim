@@ -32,8 +32,11 @@ require("lazy").setup({
       import = "lazyvim.plugins",
       opts = { colorscheme = "kanso" },
     },
-    -- import/override with your plugins
+    -- import LazyVim extras (all extras must come before plugins)
     { import = "lazyvim.plugins.extras.dap.core" },
+    { import = "lazyvim.plugins.extras.ui.mini-starter" },
+    { import = "lazyvim.plugins.extras.lang.json" },
+    -- import/override with your plugins (must be last)
     { import = "plugins" },
   },
   defaults = {

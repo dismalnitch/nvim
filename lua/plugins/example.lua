@@ -7,16 +7,8 @@
 -- * disable/enabled LazyVim plugins
 -- * override the configuration of LazyVim plugins
 return {
-  -- add gruvbox
-  { "ellisonleao/gruvbox.nvim" },
-
-  -- Configure LazyVim to load gruvbox
-  {
-    "LazyVim/LazyVim",
-    opts = {
-      colorscheme = "gruvbox",
-    },
-  },
+  -- gruvbox theme (disabled in favor of kanso)
+  -- { "ellisonleao/gruvbox.nvim" },
 
   -- change trouble config
   {
@@ -125,11 +117,7 @@ return {
     end,
   },
 
-  -- use mini.starter instead of alpha
-  { import = "lazyvim.plugins.extras.ui.mini-starter" },
-
-  -- add jsonls and schemastore packages, and setup treesitter for json, json5 and jsonc
-  { import = "lazyvim.plugins.extras.lang.json" },
+  -- mini.starter and json lang support are now imported in lazy.lua
 
   -- Mason configuration for Neovim 0.11 LSP
   {

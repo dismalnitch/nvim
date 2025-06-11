@@ -31,18 +31,6 @@ map(
   "<cmd>Lspsaga peek_type_definition",
   { desc = "Peek Type Definition" }
 )
-map(
-  "n",
-  "<leader>aa",
-  "<cmd>CodeCompanionActions<cr>",
-  { desc = "Code Companion" }
-)
-map(
-  "n",
-  "<leader>ac",
-  "<cmd>CodeCompanionClose<cr>",
-  { desc = "Code Companion Close" }
-)
 
 -- Load new config without closing
 local config_path = vim.fn.stdpath("config")
