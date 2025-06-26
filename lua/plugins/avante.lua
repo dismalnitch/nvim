@@ -8,11 +8,79 @@ return {
     behaviour = {
       auto_suggestions = false, -- Disable auto-suggestions
     },
+    -- Workaround for Neovim LSP sync bug with avante
+    windows = {
+      position = "right",
+      wrap = true,
+      width = 30,
+      sidebar_header = {
+        align = "center",
+        rounded = true,
+      },
+    },
+    provider = "copilot", -- Default provider using Claude via GitHub Pro
+    providers = {
+      copilot = {
+        endpoint = "https://api.githubcopilot.com",
+        model = "claude-4-sonnet", -- Claude 4 Sonnet via GitHub Copilot
+        parse_curl_args = function(opts, code_opts)
+          return {
+            url = opts.endpoint .. "/chat/completions",
+            headers = {
+              ["authorization"] = "Bearer " .. os.getenv("GITHUB_TOKEN"),
+              ["content-type"] = "application/json",
+            },
+            body = {
+              model = opts.model,
+              messages = require("avante.providers").copilot.parse_message(
+                code_opts
+              ),
+              stream = true,
+            },
+          }
+        end,
+        parse_response_data = function(data_stream, event_state, opts)
+          require("avante.providers").openai.parse_response(
+            data_stream,
+            event_state,
+            opts
+          )
+        end,
+      },
+      copilot_gpt4 = {
+        endpoint = "https://api.githubcopilot.com",
+        model = "gpt-4",
+        parse_curl_args = function(opts, code_opts)
+          return {
+            url = opts.endpoint .. "/chat/completions",
+            headers = {
+              ["authorization"] = "Bearer " .. os.getenv("GITHUB_TOKEN"),
+              ["content-type"] = "application/json",
+            },
+            body = {
+              model = opts.model,
+              messages = require("avante.providers").copilot.parse_message(
+                code_opts
+              ),
+              stream = true,
+            },
+          }
+        end,
+        parse_response_data = function(data_stream, event_state, opts)
+          require("avante.providers").openai.parse_response(
+            data_stream,
+            event_state,
+            opts
+          )
+        end,
+      },
+    },
     mappings = {
       -- Add any custom mappings here
       ask = "<leader>aa", -- ask
       edit = "<leader>ae", -- edit
       refresh = "<leader>ar", -- refresh
+      switch_provider = "<leader>ap", -- switch between copilot and claude
       toggle = {
         default = "<leader>at", -- toggle
         debug = "<leader>ad", -- debug
