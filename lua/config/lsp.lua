@@ -42,6 +42,24 @@ local function setup_lsp_keymaps(bufnr)
   vim.keymap.set("n", "<leader>ce", vim.diagnostic.open_float, opts)
 end
 
+local function expand_type()
+  local params = vim.lsp.util.make_position_params(0, "utf-8")
+  vim.lsp.buf_request(
+    0,
+    "textDocument/hover",
+    params,
+    function(err, result, ctx, config)
+      if result and result.contents then
+        local contents = result.contents
+        if type(contents) == "table" and contents.value then
+          -- Show in larger window
+          vim.api.nvim_echo({ { contents.value, "Normal" } }, true, {})
+        end
+      end
+    end
+  )
+end
+
 -- Setup LSP attach autocmd
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("UserLspConfig", {}),

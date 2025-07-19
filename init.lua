@@ -23,3 +23,17 @@ vim.opt.foldtext = "v:lua.vim.treesitter.foldtext()"
 vim.g.copilot_no_tab_map = false
 
 vim.api.nvim_set_hl(0, "WinSeparator", { fg = "#A4A7A4" })
+
+vim.keymap.set(
+  { "n", "v", "i" },
+  "<PageUp>",
+  "<C-u>",
+  { desc = "Page up -> half screen up" }
+)
+
+vim.keymap.set(
+  { "n", "v", "i" },
+  "<PageDown>",
+  "<C-d>",
+  { desc = "Page down -> half screen down" }
+)
