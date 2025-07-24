@@ -125,7 +125,6 @@ return {
     opts = {
       ensure_installed = {
         -- Language servers
-        "typescript-language-server",
         "pyright",
         "gopls",
         
