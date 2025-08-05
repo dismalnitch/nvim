@@ -37,3 +37,14 @@ vim.keymap.set(
   "<C-d>",
   { desc = "Page down -> half screen down" }
 )
+
+-- Truncate the inlayHint to prevent kabob type hinting
+-- vim.lsp.handlers["textDocument/inlayHint"] = function(_, result, ctx, config)
+--   -- Custom truncation logic here
+--   for _, hint in ipairs(result or {}) do
+--     if hint.label and #hint.label > 50 then
+--       hint.label = string.sub(hint.label, 1, 20) .. "..."
+--     end
+--   end
+--   return vim.lsp.handlers["textDocument/inlayHint"](_, result, ctx, config)
+-- end
