@@ -1,3 +1,15 @@
+-- Autocmd created once, outside of opts function to prevent accumulation
+vim.api.nvim_create_autocmd("WinClosed", {
+  group = vim.api.nvim_create_augroup("dashboard_lazy_close", { clear = true }),
+  callback = function(event)
+    if vim.bo[event.buf].filetype == "lazy" then
+      vim.schedule(function()
+        vim.api.nvim_exec_autocmds("UIEnter", { group = "dashboard" })
+      end)
+    end
+  end,
+})
+
 return {
   "nvimdev/dashboard-nvim",
   lazy = false,
@@ -73,7 +85,15 @@ return {
         footer = function()
           local stats = require("lazy").stats()
           local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
-          return { "⚡ Neovim loaded " .. stats.loaded .. "/" .. stats.count .. " plugins in " .. ms .. "ms" }
+          return {
+            "⚡ Neovim loaded "
+              .. stats.loaded
+              .. "/"
+              .. stats.count
+              .. " plugins in "
+              .. ms
+              .. "ms",
+          }
         end,
       },
     }

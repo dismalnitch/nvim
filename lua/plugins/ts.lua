@@ -1,25 +1,3 @@
-return {
-
-  -- add more treesitter parsers
-  {
-    "nvim-treesitter/nvim-treesitter",
-    opts = {
-      ensure_installed = {
-        "bash",
-        "html",
-        "javascript",
-        "json",
-        "lua",
-        "markdown",
-        "markdown_inline",
-        "python",
-        "query",
-        "regex",
-        "tsx",
-        "typescript",
-        "vim",
-        "yaml",
-      },
-    },
-  },
-}
+-- This file is duplicating treesitter config from lua/plugins/treesitter.lua
+-- Consolidated to avoid duplicate parser installations
+return {}

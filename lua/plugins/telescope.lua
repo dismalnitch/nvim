@@ -5,7 +5,16 @@ return {
   dependencies = { "nvim-lua/plenary.nvim" },
   opts = {
     defaults = {
-      cwd = vim.fn.systemlist("git rev-parse --show-toplevel")[1],
+      -- Use LazyVim's built-in root detection which caches the result
+      -- This avoids running shell commands on every Telescope invocation
+    },
+    pickers = {
+      find_files = {
+        cwd = require("lazyvim.util").root.get,
+      },
+      live_grep = {
+        cwd = require("lazyvim.util").root.get,
+      },
     },
   },
 }

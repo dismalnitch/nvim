@@ -16,9 +16,7 @@ vim.api.nvim_create_autocmd("User", {
     vim.keymap.set("n", "<C-l>", require("smart-splits").move_cursor_right)
   end,
 })
--- Turn on treesitter folding
-vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-vim.opt.foldtext = "v:lua.vim.treesitter.foldtext()"
+-- Folding is configured in lua/plugins/ufo.lua using nvim-ufo plugin
 
 vim.g.copilot_no_tab_map = false
 
