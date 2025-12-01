@@ -11,6 +11,8 @@ return {
           light = "pearl",
         },
       })
+      -- Apply custom highlights after colorscheme loads
+      vim.api.nvim_set_hl(0, "WinSeparator", { fg = "#A4A7A4" })
     end,
   },
   -- {
