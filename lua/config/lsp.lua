@@ -1,20 +1,2 @@
--- Simple LSP setup using lspconfig
-local lspconfig = require("lspconfig")
-
--- Setup TypeScript language server
-lspconfig.ts_ls.setup({
-  cmd = { "typescript-language-server", "--stdio" },
-  filetypes = {
-    "typescript",
-    "typescriptreact",
-  },
-  root_dir = function(fname)
-    local util = require("lspconfig.util")
-    return util.root_pattern(
-      "package.json",
-      "tsconfig.json",
-      "jsconfig.json",
-      ".git"
-    )(fname)
-  end,
-})
+-- LSP setup handled via plugin specs in lua/plugins/
+-- TypeScript: typescript-tools.nvim (see lua/plugins/ts.lua)
