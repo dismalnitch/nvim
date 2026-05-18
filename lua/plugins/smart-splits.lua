@@ -29,6 +29,11 @@ return {
       require("smart-splits").resize_right,
       { noremap = true, silent = true }
     )
+    -- same resize, lowercase Alt+h/j/k/l (no shift required)
+    vim.keymap.set("n", "<M-h>", require("smart-splits").resize_left,  { noremap = true, silent = true })
+    vim.keymap.set("n", "<M-j>", require("smart-splits").resize_down,  { noremap = true, silent = true })
+    vim.keymap.set("n", "<M-k>", require("smart-splits").resize_up,    { noremap = true, silent = true })
+    vim.keymap.set("n", "<M-l>", require("smart-splits").resize_right, { noremap = true, silent = true })
     -- moving between splits
     vim.keymap.set("n", "<C-h>", require("smart-splits").move_cursor_left)
     vim.keymap.set("n", "<C-j>", require("smart-splits").move_cursor_down)
