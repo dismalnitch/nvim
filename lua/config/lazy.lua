@@ -30,7 +30,7 @@ require("lazy").setup({
     {
       "LazyVim/LazyVim",
       import = "lazyvim.plugins",
-      opts = { colorscheme = "kanso" },
+      opts = { colorscheme = "catppuccin-frappe" },
     },
     -- import LazyVim extras (all extras must come before plugins)
     { import = "lazyvim.plugins.extras.dap.core" },

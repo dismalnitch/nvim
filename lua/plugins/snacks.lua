@@ -14,7 +14,7 @@ return {
       enabled = true,
     },
     scroll = {
-      enabled = true,
+      enabled = false,
     },
     statuscolumn = {
       enabled = true,
