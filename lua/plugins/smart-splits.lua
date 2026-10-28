@@ -2,6 +2,8 @@
 
 return {
   "mrjones2014/smart-splits.nvim",
+  -- v3 dropped built-in Kitty support (no Kitty backend yet), the kittens script, and move_cursor_previous.
+  tag = "v2.1.1-final",
   build = "./kitty/install-kittens.bash",
   config = function()
     -- recommended mappings
